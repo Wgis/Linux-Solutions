@@ -22,7 +22,6 @@ function start {
     screen -AmdS $SCREEN_NAME ./$DAEMON_GAME $PARAM_START
   fi
 }
-
 function stop {
   if ! status; then echo "$SCREEN_NAME could not be found. Probably not running."; exit 1; fi
 
