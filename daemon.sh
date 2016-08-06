@@ -13,5 +13,4 @@ if [[ `screen -ls | grep $SCREEN_NAME` == "" ]]
 	./start.sh start
 	else ./start.sh status
 fi
- 
 done
