@@ -3,7 +3,7 @@ USER="wgis"
 SCREEN_NAME="gmod"
 DIR_ROOT="gmod"
 DAEMON_GAME="srcds_run"
-PARAM_START="-console -game garrysmod +map gm_construct +gamemode sandbox +port 27015 +maxplayers 20 -autoupdate"
+PARAM_START="-console -game garrysmod +map gm_construct +gamemode sandbox +port 27015 +maxplayers 30 -autoupdate"
 
 function start {
   if [ ! -d $DIR_ROOT ]; then echo "ERROR: $DIR_ROOT is not a directory"; exit 1; fi
@@ -22,6 +22,7 @@ function start {
     screen -AmdS $SCREEN_NAME ./$DAEMON_GAME $PARAM_START
   fi
 }
+
 function stop {
   if ! status; then echo "$SCREEN_NAME could not be found. Probably not running."; exit 1; fi
 
@@ -61,7 +62,8 @@ case $1 in
 		echo "$SCREEN_NAME started successfully"
 		;;
      stop)
-          echo "Эй! Это мой любимый серверный дистрибутив!"
+          echo "Stop $SCREEN_NAME..."
+		  stop
           ;;
 	  restart)
 		echo "Restarting $SCREEN_NAME..."
@@ -84,7 +86,7 @@ case $1 in
 			fi
           ;; 
      *)
-       echo '$SCREEN_NAME (start|stop|restart|status|console)'
+       echo 'serv (start|stop|restart|status|console)'
       exit 1
 
      ;;
